@@ -1,4 +1,4 @@
-package org.example;
+package com.barrosoc;
 
 import io.quarkus.test.junit.QuarkusTestProfile;
 import java.util.Collections;

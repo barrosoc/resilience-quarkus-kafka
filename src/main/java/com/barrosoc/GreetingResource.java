@@ -1,4 +1,4 @@
-package org.example;
+package com.barrosoc;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
