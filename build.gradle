@@ -19,6 +19,7 @@ dependencies {
     testImplementation 'org.testcontainers:junit-jupiter:1.17.5'
     testImplementation 'org.testcontainers:kafka:1.17.5'
     testImplementation 'io.quarkus:quarkus-junit5'
+    testImplementation 'io.quarkus:quarkus-junit5-mockito'
 }
 
 group 'org-example'
