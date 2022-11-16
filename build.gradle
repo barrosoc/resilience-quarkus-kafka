@@ -18,6 +18,7 @@ dependencies {
     testImplementation 'io.rest-assured:rest-assured'
     testImplementation 'org.testcontainers:junit-jupiter:1.17.5'
     testImplementation 'org.testcontainers:kafka:1.17.5'
+    testImplementation 'io.quarkus:quarkus-junit5'
 }
 
 group 'org-example'
