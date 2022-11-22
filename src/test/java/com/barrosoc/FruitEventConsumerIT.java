@@ -6,6 +6,7 @@ import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 import com.google.common.collect.ImmutableMap;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
+import io.quarkus.test.junit.mockito.InjectMock;
 import io.quarkus.test.junit.mockito.InjectSpy;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
@@ -22,6 +23,9 @@ public class FruitEventConsumerIT {
 
     @InjectSpy
     private FruitEventConsumer fruitEventConsumer;
+
+    @InjectSpy
+    private JuiceMakerService juiceMakerService;
 
     private KafkaProducer<String, String> producer;
 
@@ -51,5 +55,20 @@ public class FruitEventConsumerIT {
             .get();
 
         await().untilAsserted(() -> verify(fruitEventConsumer).consume(message));
+    }
+
+    @Test
+    void shouldMakeJuiceAfterConsumingIncomingFruitMessage() throws ExecutionException, InterruptedException {
+        final var fruit = "Apple";
+
+        producer
+            .send(
+                new ProducerRecord<>(
+                    "fruit",
+                    "apple-key",
+                    fruit))
+            .get();
+
+        await().untilAsserted(() -> verify(juiceMakerService).makeJuice(fruit));
     }
 }
