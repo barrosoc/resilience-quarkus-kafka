@@ -18,10 +18,10 @@ import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 @TestProfile(IntegrationTestProfile.class)
-public class GreetingEventConsumerIT {
+public class FruitEventConsumerIT {
 
     @InjectSpy
-    private GreetingEventConsumer greetingEventConsumer;
+    private FruitEventConsumer fruitEventConsumer;
 
     private KafkaProducer<String, String> producer;
 
@@ -50,6 +50,21 @@ public class GreetingEventConsumerIT {
                     message))
             .get();
 
-        await().untilAsserted(() -> verify(greetingEventConsumer).consume(message));
+        await().untilAsserted(() -> verify(fruitEventConsumer).consume(message));
+    }
+
+    @Test
+    void shouldCallConsumeIncomingMessage() throws ExecutionException, InterruptedException {
+        final var message = "Hello";
+
+        producer
+            .send(
+                new ProducerRecord<>(
+                    "greetings",
+                    "greeting-key",
+                    message))
+            .get();
+
+        await().untilAsserted(() -> verify(fruitEventConsumer).consume(message));
     }
 }
