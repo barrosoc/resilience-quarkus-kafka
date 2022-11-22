@@ -39,29 +39,14 @@ public class FruitEventConsumerIT {
     }
 
     @Test
-    void shouldConsumeIncomingMessage() throws ExecutionException, InterruptedException {
-        final var message = "Hello";
+    void shouldConsumeIncomingFruitMessage() throws ExecutionException, InterruptedException {
+        final var message = "Apple";
 
         producer
             .send(
                 new ProducerRecord<>(
-                    "greetings",
-                    "greeting-key",
-                    message))
-            .get();
-
-        await().untilAsserted(() -> verify(fruitEventConsumer).consume(message));
-    }
-
-    @Test
-    void shouldCallConsumeIncomingMessage() throws ExecutionException, InterruptedException {
-        final var message = "Hello";
-
-        producer
-            .send(
-                new ProducerRecord<>(
-                    "greetings",
-                    "greeting-key",
+                    "fruit",
+                    "apple-key",
                     message))
             .get();
 
