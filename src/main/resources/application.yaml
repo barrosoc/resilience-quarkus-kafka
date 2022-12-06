@@ -1,0 +1,4 @@
+quarkus:
+  rest-client:
+    juice-maker:
+      url: http://localhost:8080
