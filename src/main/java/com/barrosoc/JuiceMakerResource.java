@@ -1,5 +1,6 @@
 package com.barrosoc;
 
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -12,9 +13,13 @@ import javax.ws.rs.core.Response.Status;
 @Path("/juice-maker")
 public class JuiceMakerResource {
 
+    @Inject
+    JuiceMakerService juiceMakerService;
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response makeJuice(String fruit) {
+        juiceMakerService.makeJuice(fruit);
         return Response.status(Status.CREATED).build();
     }
 

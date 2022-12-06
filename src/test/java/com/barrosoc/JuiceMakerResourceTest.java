@@ -1,12 +1,17 @@
 package com.barrosoc;
 
 import static io.restassured.RestAssured.given;
+import static org.mockito.Mockito.verify;
 
 import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.mockito.InjectSpy;
 import org.junit.jupiter.api.Test;
 
 @QuarkusTest
 class JuiceMakerResourceTest {
+
+    @InjectSpy
+    JuiceMakerService juiceMakerService;
 
     @Test
     public void shouldMakeJuiceForAGivenFruit() {
@@ -18,6 +23,8 @@ class JuiceMakerResourceTest {
             .post("/juice-maker")
             .then()
             .statusCode(201);
+
+        verify(juiceMakerService).makeJuice("apple");
     }
 
 }
