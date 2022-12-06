@@ -1,8 +1,9 @@
-package com.barrosoc;
+package com.barrosoc.juicemaker;
 
 import static io.restassured.RestAssured.given;
 import static org.mockito.Mockito.verify;
 
+import com.barrosoc.juicemaker.JuiceMakerService;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.mockito.InjectSpy;
 import org.junit.jupiter.api.Test;

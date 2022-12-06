@@ -1,4 +1,4 @@
-package com.barrosoc;
+package com.barrosoc.juicemaker;
 
 import static org.apache.commons.lang3.StringUtils.capitalize;
 

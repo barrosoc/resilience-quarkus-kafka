@@ -1,4 +1,4 @@
-package com.barrosoc;
+package com.barrosoc.juicemaker;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
