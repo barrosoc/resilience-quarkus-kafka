@@ -1,5 +1,6 @@
-package com.barrosoc;
+package com.barrosoc.fruit;
 
+import com.barrosoc.juicemaker.JuiceMakerService;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import org.eclipse.microprofile.reactive.messaging.Incoming;

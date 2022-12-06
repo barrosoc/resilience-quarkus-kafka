@@ -1,12 +1,15 @@
-package com.barrosoc;
+package com.barrosoc.fruit;
 
 import static org.mockito.Mockito.verify;
 import static org.testcontainers.shaded.org.awaitility.Awaitility.await;
 
+import com.barrosoc.InfrastructureTestResource;
+import com.barrosoc.IntegrationTestProfile;
+import com.barrosoc.fruit.FruitEventConsumer;
+import com.barrosoc.juicemaker.JuiceMakerService;
 import com.google.common.collect.ImmutableMap;
 import io.quarkus.test.junit.QuarkusTest;
 import io.quarkus.test.junit.TestProfile;
-import io.quarkus.test.junit.mockito.InjectMock;
 import io.quarkus.test.junit.mockito.InjectSpy;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
